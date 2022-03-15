@@ -3,7 +3,7 @@ pdk new module java --skip-interview
 
 #inside java module manifest/install.pp
 class java::install { 
-   package { [ 'epel-release', 'java-1.7.0-openjdk'] : 
+   package { [ 'epel-release-7-11.noarch', 'java-1.7.0-openjdk'] : 
      ensure => installed,
   }
 }
@@ -23,7 +23,7 @@ class tomcat::install {
     
     package { [ 'tomcat', 'tomcat-webapps' ]: 
        ensure => installed, 
-       require => Package['epel-release']
+       require => Package['epel-release-7-11.noarch']
     } 
 }
 
