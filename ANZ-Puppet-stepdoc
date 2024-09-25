@@ -8,4 +8,5 @@ sudo nano /etc/default/puppetserver
 JAVA_ARGS="-Xms1g -Xmx1g -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"
 sudo systemctl start puppetserver
 sudo systemctl enable puppetserver
+sudo systemctl status puppetserver
 
