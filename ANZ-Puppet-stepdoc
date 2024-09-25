@@ -16,5 +16,10 @@ wget https://apt.puppetlabs.com/puppet8-release-jammy.deb
 sudo dpkg -i puppet8-release-jammy.deb 
 sudo apt update
 sudo apt install puppet-agent
+sudo nano /etc/puppetlabs/puppet/puppet.conf
+#Add the following lines to the end of the Puppet configuration file to define the Puppet master information:
+[main]
+certname = puppetclient
+server = puppetmaster
 
 
