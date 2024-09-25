@@ -21,5 +21,6 @@ sudo nano /etc/puppetlabs/puppet/puppet.conf
 [main]
 certname = puppetclient
 server = puppetmaster
+sudo systemctl start puppet
 
 
