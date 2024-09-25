@@ -1,1 +1,2 @@
 #
+wget https://apt.puppetlabs.com/puppet8-release-jammy.deb
