@@ -23,5 +23,6 @@ certname = puppetclient
 server = puppetmaster
 sudo systemctl start puppet
 sudo systemctl enable puppet
+sudo systemctl status puppet
 
 
