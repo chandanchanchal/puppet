@@ -10,3 +10,10 @@ sudo systemctl start puppetserver
 sudo systemctl enable puppetserver
 sudo systemctl status puppetserver
 
+
+# Below cmd should be run on each and every Agent
+wget https://apt.puppetlabs.com/puppet8-release-jammy.deb  
+sudo dpkg -i puppet8-release-jammy.deb 
+sudo apt update
+
+
