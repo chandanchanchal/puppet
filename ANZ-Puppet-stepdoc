@@ -24,5 +24,6 @@ server = puppetmaster
 sudo systemctl start puppet
 sudo systemctl enable puppet
 sudo systemctl status puppet
+sudo /opt/puppetlabs/bin/puppetserver ca list --all
 
 
