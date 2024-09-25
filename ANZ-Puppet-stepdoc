@@ -1,7 +1,11 @@
-#
+# Below cmd should be run on master
 wget https://apt.puppetlabs.com/puppet8-release-jammy.deb  
 sudo dpkg -i puppet8-release-jammy.deb 
 sudo apt update
 sudo apt install puppetserver
+# Line no 7 and 8 should be done only if your lab has less memory else ignore
 sudo nano /etc/default/puppetserver
 JAVA_ARGS="-Xms1g -Xmx1g -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"
+sudo systemctl start puppetserver
+sudo systemctl enable puppetserver
+
