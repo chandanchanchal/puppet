@@ -29,3 +29,47 @@ sudo /opt/puppetlabs/bin/puppetserver ca list --all
 sudo /opt/puppetlabs/bin/puppetserver ca sign --all
 
 
+# /etc/puppetlabs/code/environments/development/modules/webserver/manifests/init.pp
+
+class webserver {
+  # This is an empty base class. 
+  # It can be used for common webserver configurations in the future if needed.
+}
+
+# Class to install and configure Apache2
+class webserver::apache {
+  package { 'apache2':
+    ensure => installed,
+  }
+
+  service { 'apache2':
+    ensure => running,
+    enable => true,
+  }
+
+  file { '/var/www/html/index.html':
+    ensure  => present,
+    content => "<h1>Apache Webserver is running</h1>",
+  }
+}
+
+# Class to install and configure Tomcat
+class webserver::tomcat {
+  package { 'tomcat':
+    ensure => installed,
+  }
+
+  service { 'tomcat':
+    ensure => running,
+    enable => true,
+  }
+
+  # Optional: Deploy a sample application or set configurations
+  file { '/opt/tomcat/webapps/sample.war':
+    ensure  => present,
+    source  => 'puppet:///modules/webserver/sample.war',
+    require => Package['tomcat'],
+  }
+}
+
+
