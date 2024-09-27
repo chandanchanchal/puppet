@@ -140,7 +140,7 @@ class anothermodule {
 
 service_name: another_service
 enabled: true
-####################################### for RK10------------####################
+#######################################----------For RK10------------####################
 # /puppet/hieradata/common.yaml
 ---
 mymodule::app_name: 'my_app_name'
