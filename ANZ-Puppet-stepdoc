@@ -124,5 +124,17 @@ description: 'This is a sample application configuration file.'
 
 This is an example text file managed by Puppet.
 
+#############################################################################
+# /puppet/modules/anothermodule/manifests/init.pp
+
+class anothermodule {
+  # Manage an additional service
+  service { 'another_service':
+    ensure => running,
+    enable => true,
+  }
+}
+
+
 
 
