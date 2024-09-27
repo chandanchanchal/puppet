@@ -72,4 +72,13 @@ class webserver::tomcat {
   }
 }
 
+[main]
+  certname = puppetnode1.example.com
+  server = puppetmaster.example.com
+  environment = production
+  hiera_config = /etc/puppetlabs/code/hiera.yaml
+
+[agent]
+  environment = production
+
 
