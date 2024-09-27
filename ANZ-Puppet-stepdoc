@@ -118,5 +118,11 @@ class mymodule {
 application_name: <%= @app_name %>
 version: '1.0'
 description: 'This is a sample application configuration file.'
+###############################################################################
+
+# /puppet/modules/mymodule/files/example.txt
+
+This is an example text file managed by Puppet.
+
 
 
