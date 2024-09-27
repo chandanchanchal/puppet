@@ -140,6 +140,51 @@ class anothermodule {
 
 service_name: another_service
 enabled: true
+####################################### for RK10------------####################
+# /puppet/hieradata/common.yaml
+---
+mymodule::app_name: 'my_app_name'
+anothermodule::service_name: 'another_service'
+##################################################
+In PuppetFile
+mod 'myusername/mymodule', '1.0.0'  # Versioned module
+#######################################
+# /puppet/modules/mymodule/manifests/init.pp
+
+class mymodule (
+  String $app_name = 'my_application', # Abstract interface for app name
+  String $config_path = "/etc/${app_name}/config.yaml", # Allow customization via parameters
+) {
+  # Idempotently create the configuration file
+  file { $config_path:
+    ensure  => file,
+    content => template('mymodule/config.erb'),
+    mode    => '0644',
+  }
+
+  # Manage the application service
+  service { 'my_application_service':
+    ensure     => running,
+    enable     => true,
+    subscribe  => File[$config_path], # Restart service when config changes
+  }
+}
+
+
+
+
+# /puppet/hieradata/production.yaml
+---
+mymodule::app_name: 'prod_application'
+mymodule::config_path: '/etc/prod_application/config.yaml'
+
+
+# /puppet/Puppetfile
+mod 'puppetlabs-stdlib', '>= 6.0.0'
+mod 'myusername/mymodule', '1.0.1'  # Updated version with bug fixes
+
+
+
 
 
 
