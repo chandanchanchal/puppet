@@ -112,5 +112,11 @@ class mymodule {
     subscribe => File['/etc/${app_name}/config.yaml'],
   }
 }
+##########################################################
+# /puppet/modules/mymodule/templates/config.erb
+
+application_name: <%= @app_name %>
+version: '1.0'
+description: 'This is a sample application configuration file.'
 
 
