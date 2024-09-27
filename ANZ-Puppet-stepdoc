@@ -135,6 +135,11 @@ class anothermodule {
   }
 }
 
+####################################################################################
+# /puppet/modules/anothermodule/templates/service.erb
+
+service_name: another_service
+enabled: true
 
 
 
