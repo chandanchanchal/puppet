@@ -81,4 +81,14 @@ class webserver::tomcat {
 [agent]
   environment = production
 
+##############################---Puppetfile---###########################################
+# /puppet/Puppetfile
+# Define the source for the Puppet modules
+mod 'puppetlabs-stdlib', '>= 6.0.0'
+mod 'puppetlabs-apache', '>= 5.0.0'
+mod 'myusername/mymodule', '1.0.0'  # Replace with your GitHub or source repo
+
+# Add any additional modules here
+
+
 
