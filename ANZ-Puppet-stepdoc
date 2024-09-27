@@ -90,5 +90,27 @@ mod 'myusername/mymodule', '1.0.0'  # Replace with your GitHub or source repo
 
 # Add any additional modules here
 
+###############################---mymodule/init.pp-----####################
+# /puppet/modules/mymodule/manifests/init.pp
+
+class mymodule {
+  # This class manages the application configuration
+
+  # Define a parameter for the app name
+  $app_name = 'my_application'
+
+  # Include the template for the configuration file
+  file { "/etc/${app_name}/config.yaml":
+    ensure  => file,
+    content => template('mymodule/config.erb'),
+  }
+
+  # Notify the service to restart when the config changes
+  service { 'my_application_service':
+    ensure => running,
+    enable => true,
+    subscribe => File['/etc/${app_name}/config.yaml'],
+  }
+}
 
 
