@@ -184,6 +184,18 @@ mod 'puppetlabs-stdlib', '>= 6.0.0'
 mod 'myusername/mymodule', '1.0.1'  # Updated version with bug fixes
 
 
+# Create a directory on the Windows node
+file { 'C:/custom_directory':
+  ensure => 'directory',
+}
+
+# Ensure local security policy deployment
+exec { 'apply-local-security-policy':
+  command   => 'secedit /configure /db C:\Windows\security\local.sdb /cfg C:\path\to\local_security_policy.inf',
+  provider  => powershell,
+  unless    => 'secedit /export /cfg C:\path\to\exported_policy.inf | Select-String "your_policy_setting"',
+  require   => File['C:/custom_directory'],
+}
 
 
 
